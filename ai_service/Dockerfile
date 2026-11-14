@@ -1,6 +1,6 @@
-FROM python:3.11-slim
+FROM python:3.11-slim-bookworm
 
-# Устанавливаем системные библиотеки для MediaPipe (OpenGL ES, EGL)
+# Устанавливаем системные библиотеки для MediaPipe
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgl1 \
     libglib2.0-0 \
