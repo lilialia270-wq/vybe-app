@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #050005;
+  color: white;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Светящиеся круги на фоне */
+.glow-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
+}
+
+.circle-1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 105, 180, 0.4);
+  top: -100px;
+  right: -100px;
+}
+
+.circle-2 {
+  width: 300px;
+  height: 300px;
+  background: rgba(147, 112, 219, 0.3);
+  bottom: -50px;
+  left: -50px;
+}
+
+/* Стеклянная карточка */
+.glass-card {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 1200px;
+  height: 80vh;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 0 40px rgba(255, 105, 180, 0.1);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Чтобы контент не обрезался, если его много */
+}
+
+/* Навигация */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #ffb6c1;
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.nav-links span {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-links span:hover {
+  color: #ffb6c1;
+}
+
+/* Кнопки */
+.btn-outline {
+  background: transparent;
+  border: 1px solid #ffb6c1;
+  color: #ffb6c1;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-outline:hover {
+  background: #ffb6c1;
+  color: #000;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  border: none;
+  color: white;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+  margin-top: 30px;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255, 20, 147, 0.7);
+}
+
+/* Главный экран */
+.hero-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #fff, #ffb6c1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #aaa;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 450px;
+}
+
+/* =========================================
+   АНИМАЦИИ И ДОПОЛНИТЕЛЬНАЯ ВИЗУАЛКА
+   ========================================= */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4; }
+  50% { text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493, 0 0 60px #ff1493; }
+  100% { text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4; }
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.2); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.2); }
+  70% { transform: scale(1); }
+}
+
+.result-card {
+  animation: fadeInUp 0.8s ease-out forwards;
+  border: 1px solid rgba(255, 105, 180, 0.3);
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.15);
+}
+
+.price-number {
+  animation: glowPulse 2s infinite;
+  display: inline-block;
+}
+
+.heart-beat {
+  display: inline-block;
+  color: #ff69b4;
+  font-size: 3rem;
+  animation: heartBeat 1.5s infinite;
+}
+
+.bonus-badge {
+  background: rgba(255, 105, 180, 0.1);
+  border: 1px solid rgba(255, 105, 180, 0.3);
+  padding: 8px 15px;
+  border-radius: 20px;
+  margin: 5px;
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #ffb6c1;
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.bonus-badge:nth-child(1) { animation-delay: 0.2s; }
+.bonus-badge:nth-child(2) { animation-delay: 0.4s; }
+.bonus-badge:nth-child(3) { animation-delay: 0.6s; }
+.bonus-badge:nth-child(4) { animation-delay: 0.8s; }
+/* =========================================
+   СТИЛИ ДЛЯ НАВИГАЦИИ И ЛОГОТИПА
+   ========================================= */
+
+/* Красивый логотип VYBE */
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  cursor: pointer;
+  /* Градиентный текст */
+  background: linear-gradient(135deg, #fff 0%, #ffb6c1 50%, #ff69b4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Свечение */
+  filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.6));
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.9));
+  transform: scale(1.05);
+}
+
+/* Стили для вкладок навигации */
+.nav-links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav-links span {
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.nav-links span:hover {
+  color: #fff;
+  background: rgba(255, 105, 180, 0.1);
+  border-color: rgba(255, 105, 180, 0.3);
+}
+
+/* Активная вкладка (например, если ты на этой странице) */
+.nav-links span.active {
+  color: #ff69b4;
+  background: rgba(255, 105, 180, 0.15);
+  border-color: #ff69b4;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
+}

@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+opencv-python
+mediapipe
+python-multipart
+passlib[bcrypt]
+bcrypt==4.0.1
+python-jose[cryptography]
+sqlalchemy
+pydantic-settings
+pillow
